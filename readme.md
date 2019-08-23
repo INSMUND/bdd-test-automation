@@ -28,6 +28,6 @@ Was selected feature "New user registration" that consists of 3 scenarios:
 3.File NewUserRegistration.feature is provided with valid data (unique email is required ). Also you can add in NewUserRegistration.feature valid data from file ListValidDataForNewUserRegistration.txt
 
 
-**You can view reaults of script in log file src/test/resources/logfile.log
-   or in cucumber report D:\EndavaTaskCucumber\testTask-pesotoMd\target\cucumber-reports\index.html **
+You can view reaults of script in log file **src/test/resources/logfile.log**
+   or in cucumber report **testTask-pesotoMd\target\cucumber-reports\index.html**
 
