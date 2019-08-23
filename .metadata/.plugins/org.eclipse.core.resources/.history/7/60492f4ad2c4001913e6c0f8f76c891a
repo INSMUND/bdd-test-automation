@@ -1,0 +1,28 @@
+Feature: New user registration   
+   Scenario Outline: User successfully submits Registration form steps with valid credentials
+    Given User is on the RegistrationForm Page
+    When User fills  name in romanian <UserNameRom>, surname in romanian as <UserSurameRom> 
+    And fills  name in english <UserNameEng>, surname in english as  <UserSurameEng>
+    And fills  gender as <Gender>,city as <City>, address as <Address>
+    And fills  phone as <Phone>,email as  <Email>
+    And fills  password as <Password>, confirmed password as <ConfirmedPassword>
+    And accepts terms, fills captcha
+    And user clicks the link to submit     
+    Then the webpage with url=https://www.pesoto.md/md/mol/success.html is opening
+  
+      
+    Examples:
+    |UserNameRom | UserSurameRom |UserNameEng |UserSurameEng | Gender |City    |Address             |Phone   |Email                  |Password      |ConfirmedPassword|
+    | Petru      | Silonosov     | Peter      |Shilonosov    | 0      |Chisinau|str.Calea Iesilor 10|79668899|mallfjfor@mailinator.com|testpesoto2019|testpesoto2019   |
+    
+    Scenario Outline: User activates account by using link from confirmation email
+  Given User openes email <email> that he noticed in Registration form 
+  When  user finds confirmation email
+  And   finds a link to activate account
+  And   usee this link to activate account
+  Then account is activated successfully   
+  
+   Examples:
+   |email                          |
+   |ma.ilfortests16082019@gmail.com|
+    

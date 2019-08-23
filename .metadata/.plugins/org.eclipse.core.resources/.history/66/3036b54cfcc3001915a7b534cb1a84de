@@ -1,0 +1,4 @@
+brawser=FIREFOX
+implicitlyWait=60
+baseUrl=https://www.pesoto.md/md/mol/index.html
+windowMaximize=true

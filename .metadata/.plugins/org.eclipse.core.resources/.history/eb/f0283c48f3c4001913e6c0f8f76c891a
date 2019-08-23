@@ -1,0 +1,14 @@
+Feature: New user registration   
+
+    Scenario Outline: User activates account by using link from confirmation email
+  Given user finds confirmation email in list of inbox email noticed in Registration form <IMAP_AUTH_EMAIL> password <IMAP_AUTH_PWD> server <IMAP_Server> port <IMAP_Port>
+  When  user finds in email confirmation a link to activate account 
+  And   user get the link 
+  Then account is activated successfully   
+  
+   Examples:
+   |IMAP_AUTH_EMAIL                |IMAP_AUTH_PWD   |IMAP_Server   |IMAP_Port   |
+   |ma.ilfortests16082019@gmail.com|mailForTests2019|imap.gmail.com|993         |
+    
+  
+    

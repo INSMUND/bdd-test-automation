@@ -1,0 +1,172 @@
+package pageObjects;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
+
+import dataProviders.ConfigFileReader;
+import dataProviders.User;
+
+
+public class RegistrationFormPage {
+//	WebDriver driver;
+	public RegistrationFormPage(WebDriver driver) {
+		PageFactory.initElements(driver, this);
+		
+	}
+
+	@FindBy(name = "name_rus")
+	private WebElement nameRom;
+
+	@FindBy(name = "surname_rus")
+	private WebElement surnameRom;
+
+	@FindBy(name = "name_eng")
+	private WebElement nameEng;
+
+	@FindBy(name = "surname_eng")
+	private WebElement surnameEng;
+
+	@FindBy(name = "gender")
+	private WebElement gender;
+
+	@FindBy(name = "city")
+	private WebElement city;
+
+	@FindBy(name = "address")
+	private WebElement address;
+
+	@FindBy(name = "phone")
+	private WebElement phone;
+
+	@FindBy(name = "email")
+	private WebElement email;
+
+	@FindBy(name = "password")
+	private WebElement password;
+
+	@FindBy(name = "confirmPassword")
+	private WebElement confirmPassword;
+
+	@FindBy(name = "acceptTerms")
+	private WebElement acceptTerms;
+
+	@FindBy(name = "captchas")
+	private WebElement captcha;
+
+	@FindBy(id = "captchaOperation")
+	private WebElement captchaOperation;
+
+	@FindBy(how = How.CSS, using = "button.btn.pi-btn-red.pi-btn-small.pi-pull-right[type=\"submit\"]")
+	private WebElement registerButton;
+
+	// Set user name in Romanian in textbox
+	public void setUserNameRomRus(String strUserName) {
+		nameRom.sendKeys(strUserName);
+	}
+
+	// Set user surname in Romanian in textbox
+	public void setUserSurnameRomRus(String strUserSurname) {
+		surnameRom.sendKeys(strUserSurname);
+	}
+
+	// Set user name in English in textbox
+	public void setUserNameEng(String strUserNameEng) {
+		nameEng.sendKeys(strUserNameEng);
+	}
+
+	// Set user surname in English in textbox
+	public void setUserSurameEng(String strUserSurnameEng) {
+		surnameEng.sendKeys(strUserSurnameEng);
+	}
+
+	// Select gender from dropdown
+	public void selectGender(int index) {
+		String[] genderValues = { "male", "female" };
+		Select drpGender = new Select(gender);
+		drpGender.selectByValue(genderValues[index]);
+	}
+
+	// Select city from dropdown
+	public void selectCity(String cityValue) {
+		Select drpCity = new Select(city);
+		drpCity.selectByVisibleText(cityValue);
+	}
+
+	// Set address
+	public void setAddress(String addressValue) {
+		address.sendKeys(addressValue);
+	}
+
+	// Set phone
+	public void setPhone(String phoneValue) {
+		phone.sendKeys(phoneValue);
+	}
+
+	// Set email
+	public void setEmail(String emailValue) {
+		email.sendKeys(emailValue);
+	}
+
+	// Set password
+	public void setPassword(String passwordValue) {
+		password.sendKeys(passwordValue);
+	}
+
+	// Confirm password
+	public void confirmPassword(String passwordValue) {
+		confirmPassword.sendKeys(passwordValue);
+	}
+
+	// Accept terms
+	public void acceptTerms() {
+		acceptTerms.click();
+	}
+
+	// Find value for captcha
+	private String captchaCount() {
+		String expressionCountCaptcha = captchaOperation.getText();
+		String[] parts = expressionCountCaptcha.split(" ");
+		int sum = Integer.parseInt(parts[0]) + Integer.parseInt(parts[2]);
+		return Integer.toString(sum);
+	}
+
+	// Fill captcha
+	public void captchaFill() {
+		captcha.sendKeys(captchaCount());
+	}
+
+	public boolean registerButtonIsPresent() {
+		return registerButton.isDisplayed();
+	}
+
+	// Register
+	public void register() {
+		registerButton.click();
+	}
+
+	public void fill_UserInformation(User user) {
+	//	pesotoRegisterPage=new PesotoRegisterPage(driver);      
+    	setUserNameRomRus(user.userNameRom);
+    	setUserSurnameRomRus(user.userSurameRom);
+    	setUserNameEng(user.userNameEng);
+    	setUserSurameEng(user.userSurameEng);
+    	selectGender(user.gender);
+    	selectCity(user.city);
+    	setAddress(user.address);
+    	setPhone(user.phone);
+    	setEmail(user.email);
+    	setPassword(user.password);
+    	confirmPassword(user.confirmedPassword);
+    	acceptTerms();
+    	captchaFill();
+    	register();
+		
+	}
+	
+	
+
+}

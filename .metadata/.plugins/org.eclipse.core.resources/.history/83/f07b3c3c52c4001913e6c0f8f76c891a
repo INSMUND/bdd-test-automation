@@ -1,0 +1,9 @@
+Feature: New user registration   
+     Scenario Outline: User submits Registration form steps
+    Given User is on the RegistrationForm Page
+    When User fills <UserNameEng>
+    
+      
+    Examples:
+    |UserNameEng |
+    |  Petru     | 

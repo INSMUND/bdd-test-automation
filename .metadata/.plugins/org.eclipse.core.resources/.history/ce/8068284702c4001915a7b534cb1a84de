@@ -1,0 +1,59 @@
+package stepDefinitions;
+
+import java.util.concurrent.TimeUnit;
+
+import org.junit.Assert;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+import dataProviders.ConfigFileReader;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import managers.PageObjectManager;
+import managers.TestContext;
+import managers.WebDriverManager;
+import pageObjects.HomePage;
+
+import pageObjects.RegistrationFormPage;
+
+public class step {
+//WebDriver driver;
+	TestContext testContext;
+	HomePage homePage;
+	RegistrationFormPage registrationFormPage;
+	PageObjectManager pageObjectManager;
+
+//	WebDriverManager webDriverManager;
+
+	public step(TestContext context) {
+		 testContext = context;
+		 homePage = testContext.getPageObjectManager().getHomePage();
+		 registrationFormPage=testContext.getPageObjectManager().getRegistrationFormPage();
+		 }
+	
+	@Given("^User is on the website Homepage$")
+	public void user_is_on_Home_Page() {
+//		webDriverManager = new WebDriverManager();
+
+//		driver = webDriverManager.getDriver();
+	//	driver.manage().window().maximize();
+	//	driver.manage().timeouts().implicitlyWait(configFileReader.getImplicitlyWait(), TimeUnit.SECONDS);
+		
+//		 pageObjectManager = new PageObjectManager(driver);
+//		 homePage = pageObjectManager.getHomePage();
+		 homePage.navigateTo_HomePage();
+	}
+
+	@When("^I find a link to register and click the link")
+	public void click_the_register_link() {
+		homePage.clickRegisterButton();
+	}
+
+	@Then("^Registration form is opening$")
+	public void registration_form_is_opening() {
+	//	registrationFormPage= pageObjectManager.getRegistrationFormPage();
+		Assert.assertTrue(registrationFormPage.registerButtonIsPresent());
+//		testContext.getWebDriverManager().closeDriver();
+	}
+}

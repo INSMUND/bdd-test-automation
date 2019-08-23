@@ -1,0 +1,27 @@
+package Utils;
+
+import java.util.Properties;
+
+import javax.mail.Authenticator;
+import javax.mail.Session;
+
+public class EmailSessionCreator {
+	String   IMAP_AUTH_EMAIL = "mailfortests16082019";
+	String   IMAP_AUTH_PWD   = "mailForTests2019"      ;
+	String   IMAP_Server     = "imap.gmail.com"    ;
+	String   IMAP_Port       = "993"               ;
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	public Session sessionInit()
+	{
+		Properties properties = new Properties();
+		properties.put("mail.debug"           , "false"  );
+		properties.put("mail.store.protocol"  , "imaps"  );
+		properties.put("mail.imap.ssl.enable" , "true"   );
+		properties.put("mail.imap.port"       , IMAP_Port);
+        
+		Authenticator auth = new EmailAuthenticator(IMAP_AUTH_EMAIL, IMAP_AUTH_PWD);
+		Session session = Session.getDefaultInstance(properties, auth);
+		session.setDebug(false);
+		return session;
+}
+}

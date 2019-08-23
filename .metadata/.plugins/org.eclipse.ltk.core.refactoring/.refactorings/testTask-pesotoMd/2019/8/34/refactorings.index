@@ -1,0 +1,29 @@
+1566378046129	Move 'config.properties' to 'configs'
+1566378204011	Copy compilation unit
+1566378234474	Delete element
+1566385909861	Rename type 'step'
+1566385934195	Rename type 'HomePageToRegistrationFormPageNavigation'
+1566388241417	Rename type 'RegistrationFormSubmitionSteoDefinition'
+1566391721847	Move package
+1566394892204	Delete element
+1566399882147	Copy file
+1566402558643	Delete element
+1566414119596	Delete element
+1566414126798	Delete element
+1566414225404	Delete element
+1566414232534	Delete element
+1566414237885	Delete element
+1566467956297	Delete element
+1566468257399	Rename compilation unit 'EmailSessionInit.java'
+1566468318243	Rename compilation unit 'EmailSessionInitialization.java'
+1566471566697	Rename type 'EmailSessionInitializator'
+1566473848855	Rename compilation unit 'ReadEmailOperator.java'
+1566482294119	Delete element
+1566482506193	Convert local variable 'linkToActivate' to field
+1566484489372	Delete element
+1566487740731	Delete element
+1566487746811	Delete element
+1566489145951	Delete element
+1566503209770	Delete element
+1566503316150	Move file
+1566514860490	Delete element

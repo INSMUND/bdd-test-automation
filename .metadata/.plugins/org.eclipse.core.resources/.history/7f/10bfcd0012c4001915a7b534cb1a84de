@@ -1,0 +1,6 @@
+Feature: New user registration
+
+  Scenario: User browses from Homepage to RegistrationForm page
+    Given User is on the website Homepage
+    When I find a link to register and click the link
+    Then Registration form is opening

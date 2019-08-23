@@ -1,0 +1,25 @@
+package Utils;
+
+import java.io.IOException;
+
+import javax.mail.Message;
+
+public class Main {
+
+	private static String linkToActivate;
+
+	public static void main(String[] args) {
+		EmailOperator emailOperator;
+		String confirmationEmailContent = null;
+		emailOperator=	new EmailOperator();
+		String content=emailOperator.EmailOperatorWorks("mailfortests16082019","mailForTests2019", "imap.gmail.com", "993");
+		
+		
+		
+		
+		
+	}
+
+	}
+
+

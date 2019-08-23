@@ -1,0 +1,53 @@
+package stepDefinitions;
+
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+import org.apache.log4j.xml.DOMConfigurator;
+import org.junit.Assert;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import jdk.internal.jline.internal.Log;
+import managers.PageObjectManager;
+import managers.TestContext;
+
+import pageObjects.HomePage;
+
+import pageObjects.RegistrationFormPage;
+
+public class HomePageToRegistrationFormPageNavigationStepDefinition {
+	TestContext testContext;
+	HomePage homePage;
+	RegistrationFormPage registrationFormPage;
+	PageObjectManager pageObjectManager;
+	private static Logger log = Logger.getLogger(HomePageToRegistrationFormPageNavigationStepDefinition.class);
+
+	public HomePageToRegistrationFormPageNavigationStepDefinition(TestContext context) {
+		testContext = context;
+		homePage = testContext.getPageObjectManager().getHomePage();
+		registrationFormPage = testContext.getPageObjectManager().getRegistrationFormPage();
+	}
+
+	@Given("^User is on the website Homepage$")
+	public void user_is_on_Home_Page() {
+	//	DOMConfigurator.configure("log4j.xml");
+		PropertyConfigurator.configure("log4j.properties");
+		log.info("Start test Navigation from HomePage to RegisterForm");
+		homePage.navigateTo_HomePage();
+		log.info("Homepage is opened");
+	}
+
+	@When("^I find a link to register and click the link$")
+	public void click_the_register_link() {
+		homePage.clickRegisterLink();
+		log.info("User clicked Register Link");
+	}
+
+	@Then("^Registration form is opening$")
+	public void registration_form_is_opening() {
+		Assert.assertTrue(registrationFormPage.registerButtonIsPresent());
+		if (registrationFormPage.registerButtonIsPresent()) {
+			log.info("Test passed-Registration form is displayed");
+		} else log.fatal("Test failed-Registration form is not displayed");
+	}
+}

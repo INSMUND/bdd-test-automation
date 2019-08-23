@@ -1,0 +1,6 @@
+package stepDefinitions;
+
+public class ActivationAccountFromConfirmationEmailStepDefinition {
+	@Given("^User openes email (.+) that he noticed in Registration form$")
+    public void 
+}

@@ -1,0 +1,19 @@
+Feature: New user registration
+
+   
+    
+     Scenario Outline: User submits Registration form steps
+    Given User is on the RegistrationForm Page
+    When User fills form with valid credentials name in romanian , surname in romanian 
+    And fills  name in english <UserNameEng>, surname in english as  <UserSurameEng>
+    And fills  gender as <Gender>,city as <City>, address as <Address>
+    And fills  phone as <Phone>,email as  <Email>
+    And fills  password as <Password>, confirmed password as <ConfirmedPassword> 
+    And user clicks the link to submit     
+    Then The webpage with messages "Inregistrare" "Pentru activarea contului Pesoto accesa?i linck-ul primit pe e-mail dvs." in case romanian language is selected is displayed
+    And  messages "Регистрация" "Для активации аккаунта, пожалуйста, перейдите по ссылке, которая была прислана на ваш e-mail" in case romanian language is selected is displayed
+    
+      
+    Examples:
+    |UserNameRom | UserSurameRom |UserNameEng |UserSurameEng | Gender |City    |Address             |Phone   |Email                          |Password      |ConfirmedPassword|
+    | Petru      | Silonosov     | Peter      |Shilonosov    | 2      |Chisinau|str.Calea Iesilor 10|79668899|ma.ilfortests16082019@gmail.com|testpesoto2019|testpesoto2019   |

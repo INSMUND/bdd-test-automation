@@ -1,0 +1,24 @@
+package stepDefinitions;
+
+import dataProviders.ConfigFileReader;
+import io.cucumber.java.en.Given;
+import managers.PageObjectManager;
+import managers.TestContext;
+import pageObjects.RegistrationFormPage;
+public class RegistrationFormSubmitionStepDefinition {
+	TestContext testContext;
+	
+	RegistrationFormPage registrationFormPage;
+	PageObjectManager pageObjectManager;
+
+	public RegistrationFormSubmitionStepDefinition(TestContext context) {
+		testContext = context;		
+		registrationFormPage = testContext.getPageObjectManager().getRegistrationFormPage();
+	}
+	
+	@Given("^User is on the RegistrationForm Page$")
+	public void user_is_on_RegistrationForm_Page() {
+		testContext.getWebDriverManager().getDriver().get(new ConfigFileReader().getRegistrationFormPageURL());
+	}
+
+}

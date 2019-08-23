@@ -1,0 +1,35 @@
+package Utils;
+
+import javax.mail.Folder;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Store;
+
+public class ReadEmailOperator {
+	Session session=new EmailSessionCreator().sessionInit();
+  
+	public Message[] getInboxList() {
+		try {
+	        Store store = session.getStore();
+	
+	        // ����������� � ��������� �������
+	        store.connect(IMAP_Server, IMAP_AUTH_EMAIL, IMAP_AUTH_PWD);
+	
+	        // ����� �������� ���������
+	        Folder inbox = store.getFolder("INBOX");
+	
+	        // ��������� ����� � ������ ������ ��� ������
+	        inbox.open(Folder.READ_ONLY);
+	
+	        System.out.println("���������� ��������� : " + String.valueOf(inbox.getMessageCount()));
+	        if (inbox.getMessageCount() == 0)
+	        	return;
+	        // ��������� ���������; ������ ��������� ��� ������� 1
+	        //----
+	  //      Message message = inbox.getMessage(inbox.getMessageCount());
+	        Message[] messages = inbox.getMessages();
+		return null;
+		
+	}
+
+}

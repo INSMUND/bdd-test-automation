@@ -1,0 +1,5 @@
+browser=FIREFOX
+implicitlyWait=60
+baseUrl=https://www.pesoto.md/md/mol/index.html
+registrationFormPageUrl=https://www.pesoto.md/md/mol/register.html
+windowMaximize=true

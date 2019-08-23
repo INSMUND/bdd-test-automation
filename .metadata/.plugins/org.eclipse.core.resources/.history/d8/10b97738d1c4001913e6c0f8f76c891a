@@ -1,0 +1,13 @@
+package Utils;
+
+import javax.mail.Message;
+import javax.mail.Session;
+
+public class ReadEmailOperator {
+	Session session=new EmailSessionCreator().sessionInit();
+  
+	public Message[] getInboxList(session) {
+		
+	}
+
+}

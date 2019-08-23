@@ -1,0 +1,16 @@
+package dataProviders;
+
+public class User {
+	public String userNameRom;
+	   public String userSurameRom;
+	   public String userNameEng;
+	   public String userSurameEng;	     
+	   public int gender;
+	   public String city;
+	   public String address;
+	   public String phone;
+	   public String email;
+	   public String password;
+	   public String confirmedPassword;
+
+}

@@ -1,0 +1,18 @@
+|UserNameRom | UserSurameRom |UserNameEng |UserSurameEng | Gender |City    |Address             |Phone   |Email                            |Password      |ConfirmedPassword|
+| Irina       | Russu         | Ira        |Rusu          | 1      |Chisinau|str.Calea Iesilor 10|79668599|m.ailf.ortests16082019@gmail.com  |testpesoto2019|testpesoto2019   |  
+| Victor      | Gutu          | Max        |Gutsu         | 0      |Chisinau|str.Paris 10        |79668809|m.ailfo.rtests16082019@gmail.com  |testpesoto2019|testpesoto2019   |
+| Dan         | Stirbu        | Dan        |Shtirbu       | 0      |Chisinau|str.Calea Iesilor 10|79668599|m.ailf.o.rtests16082019@gmail.com  |testpesoto2019|testpesoto2019   |  
+| Maxim       | socolov       | Max        |socolov       | 0      |Chisinau|str.Paris 10        |79668809|ma.ilfo.r.tests16082019@gmail.com  |testpesoto2019|testpesoto2019   |
+| victoria    | cretu         | vika       |Cretu         | 0      |Chisinau|str.Calea Iesilor 10|79668599|m.a.ilf.ort.ests16082019@gmail.com  |testpesoto2019|testpesoto2019   |  
+| iurii       | panga         | Iuri       |Panga         | 0      |Chisinau|str.Paris 10        |79668809|m.ail.fo.rte.sts16082019@gmail.com  |testpesoto2019|testpesoto2019   |
+
+
+
+	|IMAP_AUTH_EMAIL                   |IMAP_AUTH_PWD   |IMAP_Server   |IMAP_Port   |
+	|m.ailf.ortests16082019@gmail.com  |mailForTests2019|imap.gmail.com |993         |
+	|m.ailfo.rtests16082019@gmail.com  |mailForTests2019|imap.gmail.com |993         |
+	|m.ailf.o.rtests16082019@gmail.com |mailForTests2019|imap.gmail.com |993         |
+	|ma.ilfo.r.tests16082019@gmail.com |mailForTests2019|imap.gmail.com |993         |
+	|m.a.ilf.ort.ests16082019@gmail.com|mailForTests2019|imap.gmail.com |993         |
+	|m.ail.fo.rte.sts16082019@gmail.com|mailForTests2019|imap.gmail.com |993         |
+		

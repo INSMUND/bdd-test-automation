@@ -1,0 +1,17 @@
+package testDataTypes;
+
+public class User {
+	public String UserNameRom;
+	   public String UserSurameRom;	  
+	   public String UserSurameEng;	     
+	   public String Gender;
+	   public String City;
+	   public String Address;
+	   public String Phone;
+	   public String Email;
+	   public String Password;
+	   public String ConfirmedPassword;
+}
+	  
+	    
+	   

@@ -1,0 +1,121 @@
+2019-08-23 00:02:35,392 INFO  [HomePageToRegistrationFormPageNavigationStepDefinition] Start test Navigation from HomePage to RegisterForm 
+2019-08-23 00:02:48,590 INFO  [HomePageToRegistrationFormPageNavigationStepDefinition] Homepage is opened 
+2019-08-23 00:02:55,900 INFO  [HomePageToRegistrationFormPageNavigationStepDefinition] User clicked Register Link 
+2019-08-23 00:02:56,118 INFO  [HomePageToRegistrationFormPageNavigationStepDefinition] Test passed-Registration form is displayed 
+2019-08-23 00:03:18,059 INFO  [RegistrationFormSubmitionStepDefinition] Registration form is opened 
+2019-08-23 00:03:19,276 INFO  [RegistrationFormSubmitionStepDefinition] UserNameRom:Petru and UserSurnameRom:Silonosov are seted 
+2019-08-23 00:03:20,365 INFO  [RegistrationFormSubmitionStepDefinition] UserNameEng:Peter and UserSurnameEng:Shilonosov are seted 
+2019-08-23 00:03:21,108 INFO  [RegistrationFormSubmitionStepDefinition] gender:0  is selected 
+2019-08-23 00:03:22,028 INFO  [RegistrationFormSubmitionStepDefinition] City:Chisinau is selected 
+2019-08-23 00:03:25,401 INFO  [RegistrationFormSubmitionStepDefinition] Address:str.Calea Iesilor 10 is seted 
+2019-08-23 00:03:26,096 INFO  [RegistrationFormSubmitionStepDefinition] Phone: 79668899 is seted 
+2019-08-23 00:03:27,159 INFO  [RegistrationFormSubmitionStepDefinition] email: dfjhggugug@mailinator.comis seted 
+2019-08-23 00:03:27,802 INFO  [RegistrationFormSubmitionStepDefinition] Password: testpesoto2019 is seted 
+2019-08-23 00:03:28,550 INFO  [RegistrationFormSubmitionStepDefinition] Confirmed password: testpesoto2019 is seted 
+2019-08-23 00:03:28,717 INFO  [RegistrationFormSubmitionStepDefinition] accept terms is checked 
+2019-08-23 00:03:29,048 INFO  [RegistrationFormSubmitionStepDefinition] captcha is filled 
+2019-08-23 00:03:36,746 INFO  [RegistrationFormSubmitionStepDefinition] register form is submited by click the link to submit 
+2019-08-23 00:03:37,124 INFO  [RegistrationFormSubmitionStepDefinition] test passed-success registration message is displayed 
+2019-08-23 00:03:54,449 INFO  [ActivationAccountFromConfirmationEmailStepDefinition] Content from registration confirmation email is obtained :<p>Kate Deliu, ПОЗДРАВЛЯЕМ!</p>
+
+						 <p>Вы успешно зарегистрировались на сайте:  https://pesoto.com/md/mol/index.html</p>
+
+						 <p>Для активации Вашего личного кабинета, просим Вас нажать сюда</p><br />
+
+						 <a href='https://pesoto.md/md/mol/8189786e96a1f57a3dc6947e9114c076/active.html' target='_blank' style='padding:10px;color:#FFFFFF;background-color:#00a1df;
+
+						 text-decoration:none;border-radius:5px/5px;'>  Verify Your Email  </a>					 
+
+						 <br /><br />
+
+						 <p>Желаем Вам удачных покупок,</p>
+
+						 <p>Команда PESOTO</p>
+
+						 <p>---------------------------</p>
+
+
+
+						 <p>VĂ FELICITĂM!
+
+
+
+							V-ați înregistrat cu succes pe site-ul :https://pesoto.com/md/mol/index.html
+
+							Pentru activarea cabinetului personal, vă rugăm să apasați aici 
+
+
+
+							<a href='https://pesoto.md/md/mol/8189786e96a1f57a3dc6947e9114c076/active.html' target='_blank'>Verify Your Email</a>
+
+
+
+							Vă dorim cumpărături plăcute, 
+
+							Echipa Pesoto
+
+						</p>
+ 
+2019-08-23 00:03:54,670 INFO  [ActivationAccountFromConfirmationEmailStepDefinition] Link to activate account is: https://pesoto.md/md/mol/8189786e96a1f57a3dc6947e9114c076/active.html 
+2019-08-23 00:04:02,679 INFO  [ActivationAccountFromConfirmationEmailStepDefinition] user get link to activate account: https://pesoto.md/md/mol/8189786e96a1f57a3dc6947e9114c076/active.html 
+2019-08-23 00:04:02,834 INFO  [ActivationAccountFromConfirmationEmailStepDefinition] test passed - message success activation is displayed 
+2019-08-23 01:58:15,215 INFO  [HomePageToRegistrationFormPageNavigationStepDefinition] Start test Navigation from HomePage to RegisterForm 
+2019-08-23 01:58:29,723 INFO  [HomePageToRegistrationFormPageNavigationStepDefinition] Homepage is opened 
+2019-08-23 01:58:36,868 INFO  [HomePageToRegistrationFormPageNavigationStepDefinition] User clicked Register Link 
+2019-08-23 01:58:37,677 INFO  [HomePageToRegistrationFormPageNavigationStepDefinition] Test passed-Registration form is displayed 
+2019-08-23 01:58:53,568 INFO  [RegistrationFormSubmitionStepDefinition] Registration form is opened 
+2019-08-23 01:58:55,790 INFO  [RegistrationFormSubmitionStepDefinition] UserNameRom:Petru and UserSurnameRom:Silonosov are seted 
+2019-08-23 01:58:56,733 INFO  [RegistrationFormSubmitionStepDefinition] UserNameEng:Peter and UserSurnameEng:Shilonosov are seted 
+2019-08-23 01:58:57,437 INFO  [RegistrationFormSubmitionStepDefinition] gender:0  is selected 
+2019-08-23 01:58:58,377 INFO  [RegistrationFormSubmitionStepDefinition] City:Chisinau is selected 
+2019-08-23 01:58:59,299 INFO  [RegistrationFormSubmitionStepDefinition] Address:str.Calea Iesilor 10 is seted 
+2019-08-23 01:59:05,298 INFO  [RegistrationFormSubmitionStepDefinition] Phone: 79668899 is seted 
+2019-08-23 01:59:06,873 INFO  [RegistrationFormSubmitionStepDefinition] email: dfjhggugug@mailinator.comis seted 
+2019-08-23 01:59:07,631 INFO  [RegistrationFormSubmitionStepDefinition] Password: testpesoto2019 is seted 
+2019-08-23 01:59:08,361 INFO  [RegistrationFormSubmitionStepDefinition] Confirmed password: testpesoto2019 is seted 
+2019-08-23 01:59:08,527 INFO  [RegistrationFormSubmitionStepDefinition] accept terms is checked 
+2019-08-23 01:59:08,916 INFO  [RegistrationFormSubmitionStepDefinition] captcha is filled 
+2019-08-23 01:59:13,784 INFO  [RegistrationFormSubmitionStepDefinition] register form is submited by click the link to submit 
+2019-08-23 02:00:27,473 INFO  [ActivationAccountFromConfirmationEmailStepDefinition] Content from registration confirmation email is obtained :<p>Kate Deliu, ПОЗДРАВЛЯЕМ!</p>
+
+						 <p>Вы успешно зарегистрировались на сайте:  https://pesoto.com/md/mol/index.html</p>
+
+						 <p>Для активации Вашего личного кабинета, просим Вас нажать сюда</p><br />
+
+						 <a href='https://pesoto.md/md/mol/8189786e96a1f57a3dc6947e9114c076/active.html' target='_blank' style='padding:10px;color:#FFFFFF;background-color:#00a1df;
+
+						 text-decoration:none;border-radius:5px/5px;'>  Verify Your Email  </a>					 
+
+						 <br /><br />
+
+						 <p>Желаем Вам удачных покупок,</p>
+
+						 <p>Команда PESOTO</p>
+
+						 <p>---------------------------</p>
+
+
+
+						 <p>VĂ FELICITĂM!
+
+
+
+							V-ați înregistrat cu succes pe site-ul :https://pesoto.com/md/mol/index.html
+
+							Pentru activarea cabinetului personal, vă rugăm să apasați aici 
+
+
+
+							<a href='https://pesoto.md/md/mol/8189786e96a1f57a3dc6947e9114c076/active.html' target='_blank'>Verify Your Email</a>
+
+
+
+							Vă dorim cumpărături plăcute, 
+
+							Echipa Pesoto
+
+						</p>
+ 
+2019-08-23 02:00:27,785 INFO  [ActivationAccountFromConfirmationEmailStepDefinition] Link to activate account is: https://pesoto.md/md/mol/8189786e96a1f57a3dc6947e9114c076/active.html 
+2019-08-23 02:00:43,783 INFO  [ActivationAccountFromConfirmationEmailStepDefinition] user get link to activate account: https://pesoto.md/md/mol/8189786e96a1f57a3dc6947e9114c076/active.html 
+2019-08-23 02:00:43,921 INFO  [ActivationAccountFromConfirmationEmailStepDefinition] test passed - message success activation is displayed 

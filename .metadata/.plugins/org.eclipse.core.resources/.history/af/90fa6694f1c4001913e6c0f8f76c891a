@@ -1,0 +1,108 @@
+package Utils;
+
+import java.io.IOException;
+import java.util.Properties;
+
+import javax.mail.Address;
+import javax.mail.Authenticator;
+import javax.mail.Folder;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.NoSuchProviderException;
+import javax.mail.Session;
+import javax.mail.Store;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+
+
+
+public class ReadEmail {
+	String   IMAP_AUTH_EMAIL = "mailfortests16082019";
+	String   IMAP_AUTH_PWD   = "mailForTests2019"      ;
+	String   IMAP_Server     = "imap.gmail.com"    ;
+	String   IMAP_Port       = "993"               ;
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	public ReadEmail()
+	{
+		Properties properties = new Properties();
+		properties.put("mail.debug"           , "false"  );
+		properties.put("mail.store.protocol"  , "imaps"  );
+		properties.put("mail.imap.ssl.enable" , "true"   );
+		properties.put("mail.imap.port"       , IMAP_Port);
+        
+		Authenticator auth = new EmailAuthenticator(IMAP_AUTH_EMAIL, IMAP_AUTH_PWD);
+		Session session = Session.getDefaultInstance(properties, auth);
+		session.setDebug(false);
+			
+		try {
+	        Store store = session.getStore();
+	
+	        // ����������� � ��������� �������
+	        store.connect(IMAP_Server, IMAP_AUTH_EMAIL, IMAP_AUTH_PWD);
+	
+	        // ����� �������� ���������
+	        Folder inbox = store.getFolder("INBOX");
+	
+	        // ��������� ����� � ������ ������ ��� ������
+	        inbox.open(Folder.READ_ONLY);
+	
+	        System.out.println("���������� ��������� : " + String.valueOf(inbox.getMessageCount()));
+	        if (inbox.getMessageCount() == 0)
+	        	return;
+	        // ��������� ���������; ������ ��������� ��� ������� 1
+	        //----
+	  //      Message message = inbox.getMessage(inbox.getMessageCount());
+	        Message[] messages = inbox.getMessages(); //��������� ���� ��������� � ����� "��������"
+            
+	        if (inbox.getMessageCount() == 0)
+                return;
+          boolean letterConfirmationNotSelected=true;
+          int i=messages.length-1;
+          String letterConfirmationSubject = "��������� ��������-activarea contului"; //���� ������ ������� �������� ������������� ������
+			String emailRecipient="ma.ilfortests16082019@gmail.com";
+	     while (letterConfirmationNotSelected)  {
+	    	 String subject = messages[i].getSubject().toString().toLowerCase().trim();
+	    	 System.out.println(subject);
+	    	
+	    	 Address[] recipients=messages[i].getAllRecipients();
+	    	 String recipient=recipients[0].toString();
+	    	 System.out.println(recipient);
+	    	 if (subject.equals(letterConfirmationSubject)&(recipient.equals(emailRecipient))) {
+	    		 letterConfirmationNotSelected=false;
+	    		 Object contentMessage = messages[i].getContent();
+					String content = contentMessage.toString();
+			
+							Document doc = Jsoup.parse(content);
+							Element link = doc.select("a").first();
+							String linkHref = link.attr("href");
+							System.out.println(linkHref);
+	    	 }
+	    	 
+	     }
+	       
+	 //      Message[] messages = inbox.getMessages(); //��������� ���� ��������� � ����� "��������"
+
+		
+		} catch (NoSuchProviderException e) {
+			System.err.println(e.getMessage());
+		} catch (MessagingException e) {
+			System.err.println(e.getMessage());
+		} catch (IOException e) {
+			System.err.println(e.getMessage());
+		}
+		
+		
+	
+		}
+	
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	public static void main(String[] args)
+	{
+		new ReadEmail();
+		System.exit(0);
+	}
+	//~~~~~~~~~~~~~~~~~~~~~~~~~
+
+}

@@ -1,0 +1,46 @@
+package stepDefinitions;
+
+import java.io.File;
+import java.io.IOException;
+
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import dataProviders.ConfigFileReader;
+import dataProviders.JsonDataReader;
+import dataProviders.User;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
+import managers.PageObjectManager;
+import managers.TestContext;
+import pageObjects.RegistrationFormPage;
+public class RegistrationFormSubmitionStepDefinition {
+	TestContext testContext;
+	
+	RegistrationFormPage registrationFormPage;
+	PageObjectManager pageObjectManager;
+
+	public RegistrationFormSubmitionStepDefinition(TestContext context) {
+		testContext = context;		
+		registrationFormPage = testContext.getPageObjectManager().getRegistrationFormPage();
+	}
+	
+	@Given("^User is on the RegistrationForm Page$")
+	public void user_is_on_RegistrationForm_Page()  {
+		testContext.getWebDriverManager().getDriver().get(new ConfigFileReader().getRegistrationFormPageURL());
+			}
+	 
+//	@When("^User fills form with valid credentials name in romanian \"(.*)\", surname in romanian \"(.*)\"$ ")
+//	public void click_the_register_link(String UserNameRom, String UserSurameRom) {
+//		registrationFormPage.setUserNameRomRus(UserNameRom);
+//		registrationFormPage.setUserSurnameRomRus(UserSurameRom);
+//	}
+	
+	@When("^User fills form with valid personal \\\"(.*)\\\" register information$")
+	public void enter_personal_details_on_checkout_page(String userSurName){
+	 User user = new JsonDataReader().getUserBySurname(userSurName);
+	 registrationFormPage.fill_UserInformation(user); 
+	}	
+ 
+}

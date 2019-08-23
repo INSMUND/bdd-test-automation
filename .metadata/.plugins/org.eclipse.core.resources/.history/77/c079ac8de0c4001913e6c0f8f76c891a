@@ -1,0 +1,110 @@
+package Utils;
+
+import java.io.IOException;
+import java.util.Properties;
+
+import javax.mail.Address;
+import javax.mail.Authenticator;
+import javax.mail.Folder;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.NoSuchProviderException;
+import javax.mail.Session;
+import javax.mail.Store;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+
+import dataProviders.ConfigFileReader;
+
+public class EmailOperator {
+	String IMAP_AUTH_EMAIL_;
+	String IMAP_AUTH_PWD_;
+	String IMAP_Server_;
+	String IMAP_Port_;
+
+	public EmailOperator(String IMAP_AUTH_EMAIL, String IMAP_AUTH_PWD, String IMAP_Server, String IMAP_Port) {
+		String IMAP_AUTH_EMAIL_ = IMAP_AUTH_EMAIL;
+		String IMAP_AUTH_PWD_ = IMAP_AUTH_PWD;
+		String IMAP_Server_ = IMAP_Server;
+		String IMAP_Port_ = IMAP_Port;
+	}
+
+	Session session;
+
+	public void sessionInit() {
+		Properties properties = new Properties();
+		properties.put("mail.debug", "false");
+		properties.put("mail.store.protocol", "imaps");
+		properties.put("mail.imap.ssl.enable", "true");
+		properties.put("mail.imap.port", IMAP_Port_);
+
+		Authenticator auth = new EmailAuthenticator(IMAP_AUTH_EMAIL_, IMAP_AUTH_PWD_);
+		session = Session.getDefaultInstance(properties, auth);
+		session.setDebug(false);
+		
+	}
+
+	public Message[] getInboxList() throws IOException {
+		Message[] messages=null;
+		try {
+			Store store = session.getStore();			
+			store.connect(IMAP_Server_, IMAP_AUTH_EMAIL_, IMAP_AUTH_PWD_);			
+			Folder inbox = store.getFolder("INBOX");
+			inbox.open(Folder.READ_ONLY);
+			 messages = inbox.getMessages();
+		} catch (NoSuchProviderException e) {
+			System.err.println(e.getMessage());
+		} catch (MessagingException e) {
+			System.err.println(e.getMessage());
+		}
+		return messages;
+	}
+	
+	public String getLetterConfirmationContent(Message[] messages) {
+		if (messages.length==0)return null;
+		String content=null;
+		String letterConfirmationSubjectContains = "activarea contului";
+		String emailRecipient=IMAP_AUTH_EMAIL_;
+		String emailFrom=new ConfigFileReader().getConfirmationEmailFrom();
+		boolean letterConfirmationNotSelected=true;
+        int i=messages.length-1;	
+        try {
+	     while (letterConfirmationNotSelected)  {
+	    	 String subject = messages[i].getSubject().toString().toLowerCase().trim();
+	    	 System.out.println(subject);	    	
+	    	 Address[] recipients=messages[i].getAllRecipients();
+	    	 String recipient=recipients[0].toString();
+	    	 Address[] froms=messages[i].getFrom();
+	    	 String from=froms[0].toString();
+	    	 System.out.println(recipient);
+	    	 if (subject.contains(letterConfirmationSubjectContains)&
+	    			 (recipient.equals(emailRecipient))&
+	    			 from.equals(emailFrom)) {
+	    		 letterConfirmationNotSelected=false;
+	    		 Object contentMessage = messages[i].getContent();
+					content = contentMessage.toString();				
+	    	 }
+	     }
+        }catch (NoSuchProviderException e) {
+			System.err.println(e.getMessage());
+		} catch (MessagingException e) {
+			System.err.println(e.getMessage());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+	    	 return content;
+	     }
+			public String letterConfirmationContentParse (String content) {
+				String linkHref=null;			
+		                	Document doc = Jsoup.parse(content);
+							Element link = doc.select("a").first();
+							linkHref = link.attr("href");
+							System.out.println(linkHref);
+							return linkHref;
+	    	 }
+	
+}

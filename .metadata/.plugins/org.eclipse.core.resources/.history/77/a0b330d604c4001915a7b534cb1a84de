@@ -1,0 +1,40 @@
+package stepDefinitions;
+
+import org.junit.Assert;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import managers.PageObjectManager;
+import managers.TestContext;
+
+import pageObjects.HomePage;
+
+import pageObjects.RegistrationFormPage;
+
+public class HomePageToRegistrationFormPageNavigationStepDefinition {
+	TestContext testContext;
+	HomePage homePage;
+	RegistrationFormPage registrationFormPage;
+	PageObjectManager pageObjectManager;
+
+	public HomePageToRegistrationFormPageNavigationStepDefinition(TestContext context) {
+		testContext = context;
+		homePage = testContext.getPageObjectManager().getHomePage();
+		registrationFormPage = testContext.getPageObjectManager().getRegistrationFormPage();
+	}
+
+	@Given("^User is on the website Homepage$")
+	public void user_is_on_Home_Page() {
+		homePage.navigateTo_HomePage();
+	}
+
+	@When("^I find a link to register and click the link")
+	public void click_the_register_link() {
+		homePage.clickRegisterButton();
+	}
+
+	@Then("^Registration form is opening$")
+	public void registration_form_is_opening() {
+		Assert.assertTrue(registrationFormPage.registerButtonIsPresent());
+	}
+}

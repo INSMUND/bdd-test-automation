@@ -1,0 +1,4 @@
+brawserType=FIREFOX
+implicitlyWait=30
+baseURL=https://pesoto.md
+driverPath

@@ -1,0 +1,27 @@
+Feature: New user registration   
+   Scenario Outline: User submits Registration form steps
+    Given User is on the RegistrationForm Page
+    When User fills  name in romanian <UserNameRom>, surname in romanian as <UserSurameRom> 
+    And fills  name in english <UserNameEng>, surname in english as  <UserSurameEng>
+    And fills  gender as <Gender>,city as <City>, address as <Address>
+    And fills  phone as <Phone>,email as  <Email>
+    And fills  password as <Password>, confirmed password as <ConfirmedPassword>
+    And accepts terms, fills captcha
+    And user clicks the link to submit     
+    Then the webpage with url=https://www.pesoto.md/md/mol/success.html is opening
+    And the welcome email from website is recieved to email as <Email>
+      
+    Examples:
+    |UserNameRom | UserSurameRom |UserNameEng |UserSurameEng | Gender |City    |Address             |Phone   |Email                  |Password      |ConfirmedPassword|
+    | Petru      | Silonosov     | Peter      |Shilonosov    | 0      |Chisinau|str.Calea Iesilor 10|79668899|mallfjfor@mailinator.com|testpesoto2019|testpesoto2019   |
+    
+    Scenario Outline: User recives welcome email from website after success registration
+  Given User submited registration form and is on webpage with messages "Inregistrare" "Pentru activarea contului Pesoto accesa?i linck-ul primit pe e-mail dvs." in case romanian language is selected
+  And  messages "Регистрация" "Для активации аккаунта, пожалуйста, перейдите по ссылке, которая была прислана на ваш e-mail" in case romanian language is selected
+  When I open  my email filled in Registration form as <email>
+  Then I find  in list of new emails the welcome email from website
+  
+   Examples:
+   |email                          |
+   |ma.ilfortests16082019@gmail.com|
+    

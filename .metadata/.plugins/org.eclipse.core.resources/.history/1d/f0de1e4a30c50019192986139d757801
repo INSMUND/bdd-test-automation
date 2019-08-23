@@ -1,0 +1,106 @@
+package stepDefinitions;
+
+import org.apache.log4j.Logger;
+import org.apache.log4j.xml.DOMConfigurator;
+import org.junit.Assert;
+import dataProviders.ConfigFileReader;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import managers.PageObjectManager;
+import managers.TestContext;
+import pageObjects.RegistrationFormPage;
+import pageObjects.SuccessRegistrationPage;
+
+public class RegistrationFormSubmitionStepDefinition {
+	TestContext testContext;
+
+	RegistrationFormPage registrationFormPage;
+	SuccessRegistrationPage successRegistrationPage;
+	PageObjectManager pageObjectManager;
+	private static Logger log = Logger.getLogger(RegistrationFormSubmitionStepDefinition.class.getName());
+	public RegistrationFormSubmitionStepDefinition(TestContext context) {
+		testContext = context;
+		registrationFormPage = testContext.getPageObjectManager().getRegistrationFormPage();
+		successRegistrationPage = testContext.getPageObjectManager().getSuccessRegistrationPagee();
+	}
+
+	@Given("^User is on the RegistrationForm Page$")
+	public void user_is_on_RegistrationForm_Page() {
+		DOMConfigurator.configure("log4j.xml");
+		testContext.getWebDriverManager().getDriver().get(new ConfigFileReader().getRegistrationFormPageURL());
+		log.info("Registration form is opened");
+	}
+
+	@When("^User fills  name in romanian (.+), surname in romanian as (.+)$")
+	public void user_fills_form_UserNameRom_UserSurameRom(String UserNameRom, String UserSurnameRom) {
+		registrationFormPage.setUserNameRomRus(UserNameRom);
+		registrationFormPage.setUserSurnameRomRus(UserSurnameRom);
+		log.info("UserNameRom:"+UserNameRom+" and UserSurnameRom:"+UserSurnameRom+" are seted");
+	}
+
+	@When("^fills  name in english (.+), surname in english as  (.+)$")
+	public void user_fills_form_UserNameEng_UserSurameEng(String UserNameEng, String UserSurnameEng) {
+		registrationFormPage.setUserNameEng(UserNameEng);
+		registrationFormPage.setUserSurnameEng(UserSurnameEng);
+		log.info("UserNameEng:"+UserNameEng+" and UserSurnameEng:"+ UserSurnameEng+" are seted");
+	}
+
+	@When("^fills  gender as (.+),city as (.+), address as (.+)$")
+	public void user_fills_form_gender_city_address(int Gender, String City, String Address) {
+		registrationFormPage.selectGender(Gender);
+		log.info("gender:"+ Gender+"  is selected" );
+		registrationFormPage.selectCity(City);
+		log.info("City:"+City+" is selected");
+		registrationFormPage.setAddress(Address);
+		log.info("Address:"+Address+" is seted");
+	}
+
+	@When("^fills  phone as (.+),email as  (.+)$")
+	public void user_fills_form_phone_email(String phone, String email) {
+		registrationFormPage.setPhone(phone);
+		log.info("Phone: "+phone+" is seted");
+		registrationFormPage.setEmail(email);
+		log.info("email: "+email+"is seted");;
+	}
+
+	@When("^fills  password as (.+), confirmed password as (.+)$")
+	public void user_fills_form_password_confirmedPassword(String password, String confirmedPassword) {
+		registrationFormPage.setPassword(password);
+		log.info("Password: "+password+" is seted");;
+		registrationFormPage.confirmPassword(confirmedPassword);
+		log.info("Confirmed password: "+confirmedPassword+" is seted");
+	}
+
+	@When("^accepts terms, fills captcha$")
+	public void accepts_terms_fills_captcha() {
+		registrationFormPage.acceptTerms();
+		log.info("accept terms is checked");
+		registrationFormPage.captchaFill();
+		log.info("captcha is filled");
+	}
+
+	@When("^user clicks the link to submit$")
+	public void click_to_submit() {
+		registrationFormPage.register();
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+      log.info("register form is submited by click the link to submit");
+	}
+
+	@Then("^the webpage with message Inregistrare in romanian version or Регистрация in russian appears$")
+	public void assert_webpage_has_correct_url_after_registerform_filled() {
+		Assert.assertTrue(successRegistrationPage.success_registration_Message_is_present());
+       if (successRegistrationPage.success_registration_Message_is_present()) {
+    	   log.info("test passed-success registration message is displayed");
+       }else {
+    	   log.info("test failed-success registration message is not displayed");
+       }
+    	   
+	}
+
+}

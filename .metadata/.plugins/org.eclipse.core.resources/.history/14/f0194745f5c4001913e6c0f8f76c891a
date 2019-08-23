@@ -1,0 +1,87 @@
+package stepDefinitions;
+
+
+
+import org.junit.Assert;
+
+import dataProviders.ConfigFileReader;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+
+import managers.PageObjectManager;
+import managers.TestContext;
+import pageObjects.RegistrationFormPage;
+import pageObjects.SuccessRegistrationPage;
+public class RegistrationFormSubmitionStepDefinition {
+	TestContext testContext;
+	
+	RegistrationFormPage registrationFormPage;
+	SuccessRegistrationPage successRegistrationPage;
+	PageObjectManager pageObjectManager;
+
+	public RegistrationFormSubmitionStepDefinition(TestContext context) {
+		testContext = context;		
+		registrationFormPage = testContext.getPageObjectManager().getRegistrationFormPage();
+		successRegistrationPage=testContext.getPageObjectManager().getSuccessRegistrationPagee();
+	}
+	
+	@Given("^User is on the RegistrationForm Page$")
+	public void user_is_on_RegistrationForm_Page()  {
+		testContext.getWebDriverManager().getDriver().get(new ConfigFileReader().getRegistrationFormPageURL());
+			}
+	 @When("^User fills  name in romanian (.+), surname in romanian as (.+)$")
+	   	public void user_fills_form_UserNameRom_UserSurameRom(String UserNameRom, String UserSurameRom) {
+	   		registrationFormPage.setUserNameRomRus(UserNameRom);
+	   		registrationFormPage.setUserSurnameRomRus(UserSurameRom);
+	   	}
+	 @When("^fills  name in english (.+), surname in english as  (.+)$")
+	   	public void user_fills_form_UserNameEng_UserSurameEng(String UserNameEng, String UserSurnameEng) {
+	   		registrationFormPage.setUserNameEng(UserNameEng);
+	   		registrationFormPage.setUserSurnameEng(UserSurnameEng);
+	   	}
+	 
+	    @When("^fills  gender as (.+),city as (.+), address as (.+)$")
+	   	public void user_fills_form_gender_city_address(int Gender, String City,String Address) {
+	    	registrationFormPage.selectGender(Gender);
+	   		registrationFormPage.selectCity(City); 
+	   		registrationFormPage.setAddress(Address);
+	   	}
+	    @When("^fills  phone as (.+),email as  (.+)$")
+	   	public void user_fills_form_phone_email(String phone,String email) {
+	   		registrationFormPage.setPhone(phone); ;
+	   		registrationFormPage.setEmail(email); ; 
+	   	   	}
+	    @When("^fills  password as (.+), confirmed password as (.+)$")
+	   	public void user_fills_form_password_confirmedPassword(String password,String confirmedPassword) {
+	   		registrationFormPage.setPassword(password); ;
+	   		registrationFormPage.confirmPassword(confirmedPassword); 
+	   			}
+	    @When("^accepts terms, fills captcha$")
+	    public void	accepts_terms_fills_captcha() {
+	    	registrationFormPage.acceptTerms();
+	    	registrationFormPage.captchaFill();
+	    }
+	    @When("^user clicks the link to submit$")
+		public void click_to_submit() {
+	    	registrationFormPage.register();
+	    	 	try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+	    }
+	    @Then("^the webpage with message Inregistrare in romanian version or Регистрация in russian appears$") 
+	    public void assert_webpage_has_correct_url_after_registerform_filled() {
+	    	Assert.assertTrue(successRegistrationPage.success_registration_Message_is_present());  	
+	    	
+	    }
+	  
+}
+    
+   
+	
+ 
+

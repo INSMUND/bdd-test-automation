@@ -1,0 +1,30 @@
+package pageObjects;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import dataProviders.ConfigFileReader;
+
+public class HomePage {
+	WebDriver driver;
+	ConfigFileReader configFileReader;
+
+	public HomePage(WebDriver driver) {
+		this.driver = driver;
+		configFileReader = new ConfigFileReader();
+	}
+
+//	By registerLink = By.linkText("Înregistrare");
+	By registerLink =By.cssSelector("a[href='https://pesoto.md/md/mol/register.html']");
+	public void navigateTo_HomePage() {
+		driver.get(configFileReader.getApplicationUrl());
+	}
+
+	public void clickRegisterLink() {
+		driver.findElements(registerLink).get(0).click();
+	}
+}
+
+
+//div.modal fade gs-loggin-modal[id=loggin]>a[href=]
+//		#logging a[href='https://pesoto.md/md/mol/register.html']
+//		input[name='login'][type='submit'] 

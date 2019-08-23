@@ -1,0 +1,28 @@
+[
+   { 
+    "UserNameRom" :"Petru"
+    "UserSurameRom":"Silonosov" 
+    "UserNameEng" :"Peter"
+    "UserSurameEng":"Shilonosov 
+    "Gender":2 
+    "City":"Chisinau"
+    "Address" :"str.Calea Iesilor 10"
+    "Phone":"79668899"
+    "Email" :"mai.lfortests16082019@gmail.com" 
+    "Password":"testpesoto2019"
+    "ConfirmedPassword":"testpesoto2019"
+    },
+    {
+    "UserNameRom" :"Inga"
+    "UserSurameRom":"Silonosova" 
+    "UserNameEng" :"Inga"
+    "UserSurameEng":"Shilonosova 
+    "Gender":1
+    "City":"Orhei"
+    "Address" :"str.Calea Iesilor 10"
+    "Phone":"7966889989"
+    "Email" :"mail.fortests16082019@gmail.com" 
+    "Password":"testpesoto2019"
+    "ConfirmedPassword":"testpesoto2019"
+    }
+    ]

@@ -1,0 +1,32 @@
+package pageObjects;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
+
+public class HomePage {
+	WebDriver driver;
+	public HomePage(WebDriver driver) {
+		 this.driver = driver;
+	}
+
+//	@FindBy(how = How.CSS, using = "div.vorget>a[href=\"https://www.pesoto.md/md/mol/register.html\"]")
+//	private WebElement registerButton1;
+//	@FindBy(css ="a[href=https://www.pesoto.md/md/mol/register.html"])
+//	div.vorget a[href="https://www.pesoto.md/md/mol/register.html"]
+//	WebElement registerButton;
+//	By registerButton = By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='A?i uitat parola?'])[2]/following::a[1]");
+	By registerButton=By.linkText("Înregistrare");
+//	By registerButton=By.cssSelector("a:contains('register.html')");
+	public void navigateTo_HomePage() {
+		 driver.get("https://www.pesoto.md/md/mol/index.html");
+	}
+
+	public void clickRegisterButton() {
+	 driver.findElement(registerButton).click();
+	//	registerButton1.click();
+	}
+}
